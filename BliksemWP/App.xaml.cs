@@ -7,11 +7,20 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using BliksemWP.Resources;
+using Windows.Storage;
+using System.IO;
+using System.IO.IsolatedStorage;
+using SQLiteWinRT;
 
 namespace BliksemWP
 {
     public partial class App : Application
     {
+        /// <summary>
+        /// The database path.
+        /// </summary>
+        public static string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "stops.db"));
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -59,8 +68,58 @@ namespace BliksemWP
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
-        private void Application_Launching(object sender, LaunchingEventArgs e)
+        private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            StorageFile dbFile = null;
+            try
+            {
+                // Try to get the 
+                dbFile = await StorageFile.GetFileFromPathAsync(App.DB_PATH);
+            }
+            catch (FileNotFoundException)
+            {
+                if (dbFile == null)
+                {
+                    // Copy file from installation folder to local folder.
+                    // Obtain the virtual store for the application.
+                    IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication();
+
+                    // Create a stream for the file in the installation folder.
+                    using (Stream input = Application.GetResourceStream(new Uri("stops.db", UriKind.Relative)).Stream)
+                    {
+                        // Create a stream for the new file in the local folder.
+                        using (IsolatedStorageFileStream output = iso.CreateFile(App.DB_PATH))
+                        {
+                            // Initialize the buffer.
+                            byte[] readBuffer = new byte[4096];
+                            int bytesRead = -1;
+
+                            // Copy the file from the installation folder to the local folder. 
+                            while ((bytesRead = input.Read(readBuffer, 0, readBuffer.Length)) > 0)
+                            {
+                                output.Write(readBuffer, 0, bytesRead);
+                            }
+
+                            //PrepareFTSDatabase();
+                        }
+                    }
+                }
+            }
+        }
+
+        async void PrepareFTSDatabase()
+        {
+            // Get the file from the install location  
+            var file = await ApplicationData.Current.LocalFolder.GetFileAsync("stops.db");
+
+            // Create a new SQLite instance for the file 
+            var db = new Database(file);
+
+            // Open the database asynchronously
+            await db.OpenAsync(SqliteOpenMode.OpenReadWrite);
+
+            // Execute a SQL statement
+            await db.ExecuteStatementAsync("CREATE VIRTUAL TABLE stops USING fts4(stopindex, stopname);");
         }
 
         // Code to execute when the application is activated (brought to foreground)

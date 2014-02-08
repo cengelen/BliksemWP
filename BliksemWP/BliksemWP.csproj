@@ -137,6 +137,9 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Images\appbar.question.png" />
+    <Content Include="Images\appbar.train.png" />
+    <Content Include="Images\appbar.transit.bus.png" />
     <Content Include="stops.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

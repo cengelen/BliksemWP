@@ -11,28 +11,30 @@
     
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Image Source="/Images/appbar.train.png" Grid.Column="0" Grid.Row="0"/>
         <TextBlock Grid.Row="0" Grid.Column="1"
-                           HorizontalAlignment="Left" Text="11:49" 
+                           HorizontalAlignment="Left" Text="11:49" VerticalAlignment="Center"
                            Width="100" FontFamily="Segoe WP Semibold"/>
-        <TextBlock Grid.Row="0" Grid.Column="2" 
+        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"
                            Text="Noordsingel"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
         <TextBlock Grid.Row="1" Grid.Column="2" 
                            Text="Tram lijn 4"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Light" />
         <TextBlock Grid.Row="2" Grid.Column="1"
-                           HorizontalAlignment="Left" Text="12:03" 
+                           HorizontalAlignment="Left" Text="12:03" VerticalAlignment="Center"
                            Width="100" FontFamily="Segoe WP Semibold"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" 
+        <Image Source="/Images/appbar.train.png" Grid.Column="0" Grid.Row="2"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"
                            Text="Rotterdam Centraal Station"
                            HorizontalAlignment="Left" 
                            FontFamily="Segoe WP Semibold" />

@@ -64,7 +64,8 @@ namespace BliksemWP
                 Stop stop = new Stop() { StopIndex = statement.GetIntAt(0), StopName = statement.GetTextAt(1)  };
                 items.Add(stop);
             }
-            //Debug.WriteLine(formattedText + ": "+ items.Count);
+
+            Debug.WriteLine(formattedText + ": "+ items.Count);
             (sender as AutoCompleteBox).ItemsSource = items;
             (sender as AutoCompleteBox).PopulateComplete();
         }

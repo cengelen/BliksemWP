@@ -18,5 +18,10 @@ namespace BliksemWP
             get;
             set;
         }
+
+        public override string ToString()
+        {
+            return this.StopName;
+        }
     }
 }

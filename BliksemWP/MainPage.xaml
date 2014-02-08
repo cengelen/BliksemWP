@@ -36,17 +36,13 @@
                                FilterMode="None"
                                MinimumPopulateDelay="500"
                                Name="from" VerticalAlignment="Top"
-                               Populating="from_Populating">
-                <toolkit:AutoCompleteBox.ItemTemplate>
-                    <DataTemplate>
-                        <ContentPresenter Content="{Binding StopName}" />
-                    </DataTemplate>
-                </toolkit:AutoCompleteBox.ItemTemplate>
-            </toolkit:AutoCompleteBox>
+                               Populating="Stops_Populating" />
             <TextBlock Margin="12,0,12,0">Naar</TextBlock>
             <toolkit:AutoCompleteBox HorizontalAlignment="Left"  Width="455"                                   
-                               Name="to" VerticalAlignment="Top" 
-                               ItemsSource="{StaticResource AutoCompletions}"/>
+                               FilterMode="None"
+                               MinimumPopulateDelay="500"
+                               Name="to" VerticalAlignment="Top"
+                               Populating="Stops_Populating"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -74,7 +70,7 @@
 
             <StackPanel Orientation="Horizontal">
             </StackPanel>
-            <Button x:Name="btnStart">Plannen</Button>
+            <Button x:Name="btnStart" Click="btnStart_Click">Plannen</Button>
 
         </StackPanel>
     </Grid>

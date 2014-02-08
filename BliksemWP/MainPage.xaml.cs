@@ -25,8 +25,6 @@ namespace BliksemWP
         {
             InitializeComponent();
             SetupDB();
-
-            Loaded += MainPage_Loaded;
         }
 
         async void SetupDB()
@@ -41,26 +39,21 @@ namespace BliksemWP
             await this.db.OpenAsync(SqliteOpenMode.OpenRead);
         }
 
-        void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            btnStart.Click += btnStart_Click;
-        }
-
         void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(new Uri("/ResultPage.xaml", UriKind.Relative));
         }
 
-        async void SearchForStop(string searchText)
+        /// <summary>
+        /// Full Text Searches sqlite db for stops name to autocomplete
+        /// </summary>
+        /// <param name="searchText">text to search</param>
+        /// <param name="sender">target AutoCompleteBox</param>
+        async void SearchForStop(string searchText, object sender)
         {
             List<Stop> items = new List<Stop>();
-            /*items.Add(new Stop() { StopIndex = 0, StopName = "Bla" });
-            items.Add(new Stop() { StopIndex = 1, StopName = "Bla 1" });
-            items.Add(new Stop() { StopIndex = 2, StopName = "Bla 2" });
-            items.Add(new Stop() { StopIndex = 3, StopName = "Bla 3" });*/
 
             // Prepare a SQL statement to be executed
-            //var statement = await this.db.PrepareStatementAsync("SELECT stopindex, stopname FROM stops_fts;");
             var statement = await this.db.PrepareStatementAsync("SELECT stopindex, stopname FROM stops_fts WHERE stopname MATCH ?;");
             string formattedText = "*" + searchText.Trim().Replace(" ", "* *") + "*";
             statement.BindTextParameterAt(1, formattedText);
@@ -71,12 +64,17 @@ namespace BliksemWP
                 Stop stop = new Stop() { StopIndex = statement.GetIntAt(0), StopName = statement.GetTextAt(1)  };
                 items.Add(stop);
             }
-            Debug.WriteLine(formattedText + ": "+ items.Count);
-            from.ItemsSource = items;
-            from.PopulateComplete();
+            //Debug.WriteLine(formattedText + ": "+ items.Count);
+            (sender as AutoCompleteBox).ItemsSource = items;
+            (sender as AutoCompleteBox).PopulateComplete();
         }
 
-        private void from_Populating(object sender, PopulatingEventArgs e)
+        /// <summary>
+        /// Event triggered by typing from user
+        /// </summary>
+        /// <param name="sender">sender object</param>
+        /// <param name="e">event arguments</param>
+        private void Stops_Populating(object sender, PopulatingEventArgs e)
         {
             if (this.db == null)
             {
@@ -84,7 +82,7 @@ namespace BliksemWP
                 e.Cancel = true;
             }
 
-            SearchForStop(e.Parameter);
+            SearchForStop(e.Parameter, sender);
 
             e.Cancel = true;
         }

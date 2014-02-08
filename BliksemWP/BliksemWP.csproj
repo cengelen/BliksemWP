@@ -97,7 +97,10 @@
     <Compile Include="Controls\JourneyLegControl.xaml.cs">
       <DependentUpon>JourneyLegControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataObjects\JourneyLeg.cs" />
+    <Compile Include="Enums\JourneyLegType.cs" />
     <Compile Include="Helpers\AutoCompleteWords.cs" />
+    <Compile Include="Helpers\ResultConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -137,6 +140,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Images\appbar.man.walk.png" />
     <Content Include="Images\appbar.question.png" />
     <Content Include="Images\appbar.train.png" />
     <Content Include="Images\appbar.transit.bus.png" />

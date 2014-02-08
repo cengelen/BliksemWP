@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using BliksemWP.Helpers;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using BliksemWP.Resources;
@@ -25,6 +26,7 @@ namespace BliksemWP
         {
             InitializeComponent();
             SetupDB();
+            ResultConverter tmp = new ResultConverter();
         }
 
         async void SetupDB()

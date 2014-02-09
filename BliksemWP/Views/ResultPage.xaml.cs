@@ -9,7 +9,7 @@ using BliksemWP.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace BliksemWP
+namespace BliksemWP.Views
 {
     public partial class ResultPage : PhoneApplicationPage
     {

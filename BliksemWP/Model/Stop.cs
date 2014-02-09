@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BliksemWP
+namespace BliksemWP.Model
 {
-    class Stop
+    public class Stop
     {
         public int StopIndex
         {

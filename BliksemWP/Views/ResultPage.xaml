@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="BliksemWP.ResultPage"
+    x:Class="BliksemWP.Views.ResultPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -40,13 +40,13 @@
                            HorizontalAlignment="Left" Text="Van" 
                            Width="100" FontFamily="Segoe WP Light"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" 
-                           Text="Rotterdam, Noordsingel"
+                           Text="{Binding DepartureStop, Mode=TwoWay}"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="12,0,12,0" 
                            HorizontalAlignment="Left" Text="Naar" 
                            Width="100" FontFamily="Segoe WP Light"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" 
-                           Text="Rotterdam, Centraal Station"
+                           Text="{Binding ArrivalStop, Mode=TwoWay}"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="12,0,12,0" 
                            HorizontalAlignment="Left" Text="Op" 

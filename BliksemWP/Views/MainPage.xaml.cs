@@ -13,8 +13,9 @@ using Windows.Storage;
 using SQLiteWinRT;
 using System.Collections;
 using System.Diagnostics;
+using BliksemWP.Model;
 
-namespace BliksemWP
+namespace BliksemWP.Views
 {
     public partial class MainPage : PhoneApplicationPage
     {

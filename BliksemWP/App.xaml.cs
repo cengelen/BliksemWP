@@ -73,8 +73,17 @@ namespace BliksemWP
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+            Boolean copiedStops = !storage.FileExists(App.DB_PATH);
+            
             await copyResourceFile(App.DB_PATH, STOPS_DB_NAME);
             await copyResourceFile(App.DATA_FILE_PATH, DATA_FILE_NAME);
+
+            // Only do this if we (re)loaded the database 
+            if (copiedStops)
+            {
+                PrepareFTSDatabase();
+            }
 
         }
 
@@ -119,7 +128,7 @@ namespace BliksemWP
         async void PrepareFTSDatabase()
         {
             // Get the file from the install location  
-            var file = await ApplicationData.Current.LocalFolder.GetFileAsync("stops.db");
+            var file = await ApplicationData.Current.LocalFolder.GetFileAsync(STOPS_DB_NAME);
 
             // Create a new SQLite instance for the file 
             var db = new Database(file);
@@ -129,6 +138,8 @@ namespace BliksemWP
 
             // Execute a SQL statement
             await db.ExecuteStatementAsync("CREATE VIRTUAL TABLE stops USING fts4(stopindex, stopname);");
+
+            db.Dispose();
         }
 
         // Code to execute when the application is activated (brought to foreground)

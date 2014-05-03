@@ -15,10 +15,6 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <phone:PhoneApplicationPage.Resources>
-        <local:AutoCompleteWords x:Key="AutoCompletions" />
-    </phone:PhoneApplicationPage.Resources>
-
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

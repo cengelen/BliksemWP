@@ -99,7 +99,6 @@
     </Compile>
     <Compile Include="DataObjects\JourneyLeg.cs" />
     <Compile Include="Enums\JourneyLegType.cs" />
-    <Compile Include="Helpers\AutoCompleteWords.cs" />
     <Compile Include="Helpers\ResultConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">

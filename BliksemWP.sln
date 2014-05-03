@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BliksemWP", "BliksemWP\BliksemWP.csproj", "{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}"
 EndProject
@@ -44,9 +44,8 @@ Global
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|ARM.ActiveCfg = Release|ARM
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|ARM.Build.0 = Release|ARM
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|ARM.Deploy.0 = Release|ARM
-		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Mixed Platforms.Build.0 = Release|x86
-		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Mixed Platforms.Deploy.0 = Release|x86
+		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Mixed Platforms.ActiveCfg = Release|ARM
+		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Mixed Platforms.Build.0 = Release|ARM
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Win32.ActiveCfg = Release|x86
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Win32.Build.0 = Release|x86
 		{E7A1764B-FEB2-4BF4-A912-18E7AB3D5B4B}.Release|Win32.Deploy.0 = Release|x86
@@ -65,8 +64,8 @@ Global
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Any CPU.ActiveCfg = Release|Win32
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|ARM.ActiveCfg = Release|ARM
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|ARM.Build.0 = Release|ARM
-		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Mixed Platforms.ActiveCfg = Release|ARM
+		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Mixed Platforms.Build.0 = Release|ARM
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Win32.ActiveCfg = Release|Win32
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|Win32.Build.0 = Release|Win32
 		{4AE0193F-5986-404E-87B6-1EC9301D16D8}.Release|x86.ActiveCfg = Release|Win32
@@ -83,8 +82,8 @@ Global
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Any CPU.ActiveCfg = Release|Win32
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|ARM.ActiveCfg = Release|ARM
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|ARM.Build.0 = Release|ARM
-		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Mixed Platforms.ActiveCfg = Release|ARM
+		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Mixed Platforms.Build.0 = Release|ARM
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Win32.ActiveCfg = Release|Win32
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|Win32.Build.0 = Release|Win32
 		{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}.Release|x86.ActiveCfg = Release|Win32

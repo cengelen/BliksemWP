@@ -26,7 +26,6 @@ namespace BliksemWP
         {
             InitializeComponent();
             SetupDB();
-            ResultConverter tmp = new ResultConverter();
         }
 
         async void SetupDB()
@@ -43,7 +42,9 @@ namespace BliksemWP
 
         void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/ResultPage.xaml", UriKind.Relative));
+            Stop fromStop = (Stop) from.SelectedItem;
+            Stop toStop = (Stop) to.SelectedItem;
+            NavigationService.Navigate(new Uri("/ResultPage.xaml?from=" + fromStop.StopIndex+ "&to=" + toStop.StopIndex, UriKind.Relative));
         }
 
         /// <summary>

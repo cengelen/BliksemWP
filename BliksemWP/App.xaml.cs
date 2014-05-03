@@ -19,7 +19,10 @@ namespace BliksemWP
         /// <summary>
         /// The database path.
         /// </summary>
-        public static string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "stops.db"));
+        public static string STOPS_DB_NAME = "stops.db";
+        public static string DATA_FILE_NAME = "timetable.dat";
+        public static string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, STOPS_DB_NAME));
+        public static string DATA_FILE_PATH = Path.Combine(ApplicationData.Current.LocalFolder.Path, DATA_FILE_NAME);
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -70,11 +73,18 @@ namespace BliksemWP
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            await copyResourceFile(App.DB_PATH, STOPS_DB_NAME);
+            await copyResourceFile(App.DATA_FILE_PATH, DATA_FILE_NAME);
+
+        }
+
+        private static async System.Threading.Tasks.Task copyResourceFile(String pathName, String fileName)
+        {
             StorageFile dbFile = null;
             try
             {
                 // Try to get the 
-                dbFile = await StorageFile.GetFileFromPathAsync(App.DB_PATH);
+                dbFile = await StorageFile.GetFileFromPathAsync(pathName);
             }
             catch (FileNotFoundException)
             {
@@ -85,10 +95,10 @@ namespace BliksemWP
                     IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication();
 
                     // Create a stream for the file in the installation folder.
-                    using (Stream input = Application.GetResourceStream(new Uri("stops.db", UriKind.Relative)).Stream)
+                    using (Stream input = Application.GetResourceStream(new Uri(fileName, UriKind.Relative)).Stream)
                     {
                         // Create a stream for the new file in the local folder.
-                        using (IsolatedStorageFileStream output = iso.CreateFile(App.DB_PATH))
+                        using (IsolatedStorageFileStream output = iso.CreateFile(pathName))
                         {
                             // Initialize the buffer.
                             byte[] readBuffer = new byte[4096];
@@ -100,7 +110,6 @@ namespace BliksemWP
                                 output.Write(readBuffer, 0, bytesRead);
                             }
 
-                            //PrepareFTSDatabase();
                         }
                     }
                 }

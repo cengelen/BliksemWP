@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>5fd0e509-b6ae-4f29-bd2a-4d2cc10f3aa0</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bitset.c" />
+    <ClCompile Include="geometry.c" />
+    <ClCompile Include="polyline.c" />
+    <ClCompile Include="qstring.c" />
+    <ClCompile Include="radixtree.c" />
+    <ClCompile Include="router.c" />
+    <ClCompile Include="tdata.c" />
+    <ClCompile Include="util.c" />
+    <ClCompile Include="NcxPppp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bitset.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="geometry.h" />
+    <ClInclude Include="polyline.h" />
+    <ClInclude Include="qstring.h" />
+    <ClInclude Include="radixtree.h" />
+    <ClInclude Include="router.h" />
+    <ClInclude Include="stdbool.h" />
+    <ClInclude Include="tdata.h" />
+    <ClInclude Include="util.h" />
+    <ClInclude Include="NcxPppp.h" />
+  </ItemGroup>
+</Project>

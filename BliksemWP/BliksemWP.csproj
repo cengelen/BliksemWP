@@ -171,7 +171,6 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -190,7 +189,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sqlwinrt_7f0d9f81c2ab\SQLiteWinRTPhone\SQLiteWinRTPhone.vcxproj">
+    <ProjectReference Include="..\NcxPppp\NcxPppp.vcxproj">
+      <Project>{7AA6CA7D-4596-4D4C-A24E-23FFB31C2055}</Project>
+      <Name>NcxPppp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLiteWinRTPhone\SQLiteWinRTPhone.vcxproj">
       <Project>{4AE0193F-5986-404E-87B6-1EC9301D16D8}</Project>
       <Name>SQLiteWinRTPhone</Name>
     </ProjectReference>

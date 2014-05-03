@@ -47,6 +47,11 @@ namespace BliksemWP
             NavigationService.Navigate(new Uri("/ResultPage.xaml?from=" + fromStop.StopIndex+ "&to=" + toStop.StopIndex, UriKind.Relative));
         }
 
+        void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DownloadUpdatePage.xaml", UriKind.Relative));
+        }
+
         /// <summary>
         /// Full Text Searches sqlite db for stops name to autocomplete
         /// </summary>

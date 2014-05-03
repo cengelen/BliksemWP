@@ -39,7 +39,6 @@ namespace BliksemWP
             var a = new NcxPppp.LibRrrr();
             var reisadvies = a.route(App.DATA_FILE_PATH, fromStopId, toStopId);
             if (reisadvies.Length > 1) {
-                Console.Write("Got reisadvies" + reisadvies);
                 ResultConverter c = new ResultConverter(reisadvies);
                 List<JourneyLeg> journeyLegs = c.GetLegs();
                 foreach (JourneyLeg leg in journeyLegs) {

@@ -12,7 +12,6 @@ namespace NcxPppp
     {
     public:
 		LibRrrr();
-		// virtual ~LibRrrr();
 		String^ route(String^ path, int from, int to);
 	private:
 		std::unique_ptr<char> LibRrrr::PlatformStringToCharArray(String^ string);

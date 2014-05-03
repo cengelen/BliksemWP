@@ -15,10 +15,6 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <phone:PhoneApplicationPage.Resources>
-        <local:AutoCompleteWords x:Key="AutoCompletions" />
-    </phone:PhoneApplicationPage.Resources>
-
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,8 +22,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="BLIKSEM" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="reisplanner" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.MainPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -71,6 +67,7 @@
             <StackPanel Orientation="Horizontal">
             </StackPanel>
             <Button x:Name="btnStart" Click="btnStart_Click">Plan!</Button>
+            <Button x:Name="btnupdate" Click="btnUpdate_Click" Content="Laad nieuwe data"/>
 
         </StackPanel>
     </Grid>

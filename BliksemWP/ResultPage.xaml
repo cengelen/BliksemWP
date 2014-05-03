@@ -21,8 +21,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="BLIKSEM" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="reizen" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.ResultPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -41,24 +41,29 @@
                            Width="100" FontFamily="Segoe WP Light"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" 
                            Text="Rotterdam, Noordsingel"
+                           Name="DepartureName"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="12,0,12,0" 
                            HorizontalAlignment="Left" Text="Naar" 
                            Width="100" FontFamily="Segoe WP Light"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" 
                            Text="Rotterdam, Centraal Station"
+                           Name="ArrivalName"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="12,0,12,0" 
                            HorizontalAlignment="Left" Text="Op" 
                            Width="100" FontFamily="Segoe WP Light"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" 
                            Text="Zaterdag 8 februari"
-                           HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
+                           HorizontalAlignment="Left" FontFamily="Segoe WP Semibold"
+                           Name="PlanDateTime"/>
 
             </Grid>
-            <StackPanel x:Name="spJourneyLegs">
-                <!--<local:JourneyLegControl/>-->
-            </StackPanel>
+            <ScrollViewer Margin="12,0,12,0">
+                <StackPanel x:Name="spJourneyLegs">
+                    
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 

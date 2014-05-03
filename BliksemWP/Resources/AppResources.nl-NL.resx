@@ -117,27 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppTitle" xml:space="preserve">
-    <value>BLIKSEM</value>
-  </data>
-  <data name="DownloadUpdatePageTitle" xml:space="preserve">
-    <value>update</value>
-  </data>
-  <data name="MainPageTitle" xml:space="preserve">
-    <value>reisplanner</value>
-  </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>nl-NL</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
-  </data>
-  <data name="ResultPageTitle" xml:space="preserve">
-    <value>reizen</value>
-  </data>
-  <data name="UpdateInProgress" xml:space="preserve">
-    <value>Update wordt geupdate</value>
   </data>
 </root>

@@ -22,22 +22,27 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Images/appbar.train.png" Grid.Column="0" Grid.Row="0"/>
         <TextBlock Grid.Row="0" Grid.Column="1"
-                           HorizontalAlignment="Left" Text="11:49" 
+                           HorizontalAlignment="Left" Text="11:49"
+                           Name="DepartureTime"
                            Width="100" FontFamily="Segoe WP Semibold"/>
         <TextBlock Grid.Row="0" Grid.Column="2" 
                            Text="Noordsingel"
+                           Name="DepartureStop"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Semibold" />
         <TextBlock Grid.Row="1" Grid.Column="2" 
                            Text="Tram lijn 4"
+                           Name="TransportName"
                            HorizontalAlignment="Left" FontFamily="Segoe WP Light" />
         <TextBlock Grid.Row="2" Grid.Column="1"
                            HorizontalAlignment="Left" Text="12:03" 
+                           Name="ArrivalTime"
                            Width="100" FontFamily="Segoe WP Semibold"/>
         <Image Source="/Images/appbar.train.png" Grid.Column="0" Grid.Row="2"/>
         <TextBlock Grid.Row="2" Grid.Column="2" 
                            Text="Rotterdam Centraal Station"
+                           Name="ArrivalStop"
                            HorizontalAlignment="Left" 
                            FontFamily="Segoe WP Semibold" />
-        <Path Data="M25.5,50.5" Fill="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Left" Height="0" Margin="25.5,0.5,0,0" Grid.Row="1" Stretch="Fill" Stroke="{StaticResource PhoneForegroundBrush}" UseLayoutRounding="False" VerticalAlignment="Top" Width="0" StrokeThickness="2"/>
+        <Path Data="M25.5,50.5" Fill="{StaticResource PhoneContrastBackgroundBrush}" HorizontalAlignment="Left" Height="Auto" Margin="25.5,0.5,0,0" Grid.Row="1" Stretch="Fill" Stroke="{StaticResource PhoneAccentBrush}" UseLayoutRounding="False" VerticalAlignment="Top" Width="2" StrokeThickness="10"/>
     </Grid>
 </UserControl>

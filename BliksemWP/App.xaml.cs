@@ -19,7 +19,10 @@ namespace BliksemWP
         /// <summary>
         /// The database path.
         /// </summary>
-        public static string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "stops.db"));
+        public static string STOPS_DB_NAME = "stops.db";
+        public static string STOPS_DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, STOPS_DB_NAME));
+        public static string DATA_FILE_NAME = "timetable.dat";
+        public static string DATA_FILE_PATH = Path.Combine(ApplicationData.Current.LocalFolder.Path, DATA_FILE_NAME);
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -44,37 +47,34 @@ namespace BliksemWP
             // Language display initialization
             InitializeLanguage();
 
-            // Show graphics profiling information while debugging.
-            if (Debugger.IsAttached)
-            {
-                // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
-
-                // Show the areas of the app that are being redrawn in each frame.
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
-
-                // Enable non-production analysis visualization mode,
-                // which shows areas of a page that are handed off to GPU with a colored overlay.
-                //Application.Current.Host.Settings.EnableCacheVisualization = true;
-
-                // Prevent the screen from turning off while under the debugger by disabling
-                // the application's idle detection.
-                // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
-                // and consume battery power when the user is not using the phone.
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
-            }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+            Boolean copiedStops = !storage.FileExists(App.STOPS_DB_PATH);
+            
+            await copyResourceFile(App.STOPS_DB_PATH, STOPS_DB_NAME);
+            await copyResourceFile(App.DATA_FILE_PATH, DATA_FILE_NAME);
+
+            // Only do this if we (re)loaded the database 
+            if (copiedStops)
+            {
+                PrepareFTSDatabase();
+            }
+
+
+        }
+
+        private static async System.Threading.Tasks.Task copyResourceFile(String pathName, String fileName)
+        {
             StorageFile dbFile = null;
             try
             {
                 // Try to get the 
-                dbFile = await StorageFile.GetFileFromPathAsync(App.DB_PATH);
+                dbFile = await StorageFile.GetFileFromPathAsync(pathName);
             }
             catch (FileNotFoundException)
             {
@@ -85,10 +85,10 @@ namespace BliksemWP
                     IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication();
 
                     // Create a stream for the file in the installation folder.
-                    using (Stream input = Application.GetResourceStream(new Uri("stops.db", UriKind.Relative)).Stream)
+                    using (Stream input = Application.GetResourceStream(new Uri(fileName, UriKind.Relative)).Stream)
                     {
                         // Create a stream for the new file in the local folder.
-                        using (IsolatedStorageFileStream output = iso.CreateFile(App.DB_PATH))
+                        using (IsolatedStorageFileStream output = iso.CreateFile(pathName))
                         {
                             // Initialize the buffer.
                             byte[] readBuffer = new byte[4096];
@@ -100,7 +100,6 @@ namespace BliksemWP
                                 output.Write(readBuffer, 0, bytesRead);
                             }
 
-                            //PrepareFTSDatabase();
                         }
                     }
                 }
@@ -110,7 +109,7 @@ namespace BliksemWP
         async void PrepareFTSDatabase()
         {
             // Get the file from the install location  
-            var file = await ApplicationData.Current.LocalFolder.GetFileAsync("stops.db");
+            var file = await ApplicationData.Current.LocalFolder.GetFileAsync(STOPS_DB_NAME);
 
             // Create a new SQLite instance for the file 
             var db = new Database(file);
@@ -120,6 +119,8 @@ namespace BliksemWP
 
             // Execute a SQL statement
             await db.ExecuteStatementAsync("CREATE VIRTUAL TABLE stops USING fts4(stopindex, stopname);");
+
+            db.Dispose();
         }
 
         // Code to execute when the application is activated (brought to foreground)
